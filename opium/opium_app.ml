@@ -209,10 +209,10 @@ module Cmds = struct
     Term.info name ~doc ~man
 end
 
-let run_command' app =
+let run_command' ?argv app =
   let open Cmdliner in
   let cmd = Cmds.term app in
-  match Term.eval (cmd, Cmds.info app.name) with
+  match Term.eval ?argv (cmd, Cmds.info app.name) with
   | `Ok a    -> `Ok a
   | `Error _ -> `Error
   | _        -> `Not_running

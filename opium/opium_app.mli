@@ -64,7 +64,7 @@ val run_command : t -> unit
    `Error is returned if the command line arguments are incorrect.
    `Not_running is returned if the command was completed without the server
    being launched *)
-val run_command' : t -> [> `Ok of unit Lwt.t | `Error | `Not_running ]
+val run_command' : ?argv:string array -> t -> [> `Ok of unit Lwt.t | `Error | `Not_running ]
 
 (** Convenience functions for a running opium app *)
 type body = [
